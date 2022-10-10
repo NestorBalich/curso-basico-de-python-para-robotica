@@ -35,7 +35,7 @@ while (cam1.isOpened()):
    cv2.imshow('Webcam reconociendo QR', frame)	
 
    #sale del programa con "s"	   		
-   if cv2.waitKey(1) & 0xFF == ord('s'):
+   if cv2.waitKey(1) & 0xFF == ord('q'):
 	   break
 
 cam1.release()
