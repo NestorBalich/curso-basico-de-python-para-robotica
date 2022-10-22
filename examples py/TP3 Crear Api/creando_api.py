@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-from flask import Flask, request  #pip install Flask
+from flask import Flask, request  #py -m pip install Flask
 import json
 
 app = Flask(__name__)

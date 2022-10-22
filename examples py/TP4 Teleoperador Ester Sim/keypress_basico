@@ -1,0 +1,18 @@
+import keyboard
+import requests
+import os
+import json
+url="https://api.nationalize.io?name=Carlos"
+
+while True:
+    tecla = keyboard.read_key() 
+    if (tecla=="1"):
+        resp=requests.get(url)
+        if resp:
+            print(resp.text)
+
+    elif tecla == "2":
+        print("2")
+
+    elif tecla == "c":
+        os.system ("cls") 
