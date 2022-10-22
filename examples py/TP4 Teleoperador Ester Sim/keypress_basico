@@ -2,14 +2,20 @@ import keyboard
 import requests
 import os
 import json
-url="https://api.nationalize.io?name=Carlos"
+
+def publish(robot_id,comando,valor):
+    robot_name = "Robot" + str(robot_id)
+    data={"apikey": "acc$2g1","user_id": "Grupo 1","robot_id":robot_id,"robot_name":robot_name,"command":comando,"value":valor}
+    response = requests.post('http://8.219.78.29:8000/Ester', json=data)
+
+    print("Status code: ", response.status_code)
+    print("Printing Entire Post Request")
+    print(response.json())
 
 while True:
     tecla = keyboard.read_key() 
-    if (tecla=="1"):
-        resp=requests.get(url)
-        if resp:
-            print(resp.text)
+    if (tecla=="w"):
+            publish("1","avanzar","1")
 
     elif tecla == "2":
         print("2")
