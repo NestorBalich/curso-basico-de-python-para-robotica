@@ -14,11 +14,11 @@ def publish(robot_id,comando,valor):
 
 while True:
     tecla = keyboard.read_key() 
+    #w avanzar s retroceder a izquierda d derecha i inicio
     if (tecla=="w"):
             publish("1","avanzar","1")
 
     elif tecla == "2":
         print("2")
 
-    elif tecla == "c":
         os.system ("cls") 
