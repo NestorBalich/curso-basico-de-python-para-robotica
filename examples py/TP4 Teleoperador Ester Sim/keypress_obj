@@ -1,0 +1,58 @@
+# -*- coding: UTF-8 -*-
+#23-10-2022 teleoperador de robot para simulador Ester Sim
+#utilizando clase de comunicacion apicom_EsterSim
+#by Nestor Balich
+from class_apicom_EsterSim import *
+import keyboard
+import os
+from time import sleep
+
+#configuramos variables de entorno
+url_server = 'http://8.219.78.29:8000/Ester' #sevidor de api no modificar
+apikey = "acc$2g1" #apiKey no modificar
+user_id ="Grupo UAI" #usario habilitado no modificar
+
+robot_id = "robot0"  #ingresa numero de robot
+robot_name = "mi_nombre" #ingresa tu nombre
+
+# lee la clave la primera vez y la guarda en un archivo
+rb = apicom_EsterSim(url_server,apikey,user_id,robot_id,robot_name,True)
+robot_key = rb.get_object_key()
+
+# si ya tenes la clave poder descomentar esta linea y ponerla manualmente
+#robot_key ='50c472b0-52ea-11ed-95db-53b7051d344d'
+
+if (robot_key != ''):
+    print("Teleoperador iniciado")
+    while True:
+        sleep(0.5)
+        #tecla = keyboard.read_key() 
+        # agregar las acciones de "w" avanzar "s" retroceder "a" izquierda "d" derecha "i" inicio
+        if keyboard.is_pressed("d"):
+                rb.req_put(robot_key,"avanzar","5")
+                print("Avanzando")
+        elif keyboard.is_pressed("a"):
+                rb.req_put(robot_key,"retroceder","5")
+                print("Retroceder")
+        elif keyboard.is_pressed("w"):
+                rb.req_put(robot_key,"izquierda","5")
+                print("izquierda")
+        elif keyboard.is_pressed("s"):
+                rb.req_put(robot_key,"derecha","5")
+                print("arriba")
+        elif keyboard.is_pressed("p"):
+                rb.req_put(robot_key,"patada","50")
+                print("abajo")
+        elif keyboard.is_pressed("m"):
+            print(rb.req_post("manifest","0"))
+
+        elif keyboard.is_pressed("c"):
+            os.system ("cls") 
+
+        elif keyboard.is_pressed("q"):
+            print("Saliendo del sistema")
+            break
+else:
+    print("Clave de robot no obtenida")
+
+           
